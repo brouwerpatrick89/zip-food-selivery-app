@@ -1,0 +1,37 @@
+{
+  "unpublishedCollection": {
+    "name": "Utils",
+    "pageId": "Zip Food Delivery",
+    "pluginId": "js-plugin",
+    "pluginType": "JS",
+    "actions": [],
+    "archivedActions": [],
+    "body": "export default {\n\torderStatusOptions: [\n  {\n    \"label\": \"Order Placed\",\n    \"value\": \"ORDER PLACED\"\n  },\n  {\n    \"label\": \"Delayed\",\n    \"value\": \"DELAYED\"\n  },\n  {\n    \"label\": \"Delivered\",\n    \"value\": \"DELIVERED\"\n  },\n  {\n    \"label\": \"Refunded\",\n    \"value\": \"REFUNDED\"\n  }\n],\n\tupdateOrder: async () => {\n\t\tawait edit_order.run();\n\t\t\tawait fetch_orders.run();\n\t\treturn closeModal('edit_modal');\n\t},\n\taddOrder: async () => {\n\t\tconst orderId = this.generateRandomID();\n\t\tawait add_order.run({ id: orderId});\n\t\tawait add_products.run({ id: orderId})\n\t\tawait fetch_orders.run();\n\t\tawait resetWidget('add_modal');\n\t\treturn closeModal('add_modal');\n\t},\n\tgenerateRandomID:  () => {\n\t\treturn '_' + Math.random().toString(36).substr(2,9);\n\t}\n}",
+    "variables": [
+      {
+        "name": "orderStatusOptions",
+        "value": [
+          {
+            "label": "Order Placed",
+            "value": "ORDER PLACED"
+          },
+          {
+            "label": "Delayed",
+            "value": "DELAYED"
+          },
+          {
+            "label": "Delivered",
+            "value": "DELIVERED"
+          },
+          {
+            "label": "Refunded",
+            "value": "REFUNDED"
+          }
+        ]
+      }
+    ]
+  },
+  "id": "Zip Food Delivery_Utils",
+  "deleted": false,
+  "gitSyncId": "6267e2ea00cba01cd0305458_626807e400cba01cd0305dfd"
+}
